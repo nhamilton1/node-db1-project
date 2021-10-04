@@ -1,5 +1,5 @@
 const Accounts = require('./accounts-model')
-const yup = require('yup')
+// const yup = require('yup')
 const db = require('../../data/db-config')
 
 // const accountPayloadSchema = yup.object().shape({
@@ -64,7 +64,7 @@ exports.checkAccountNameUnique = async (req, res, next) => {
     const exisiting = await db('accounts')
       .where('name', req.body.name.trim())
       .first()
-      
+
     if (exisiting) {
       next({ status: 400, message: 'that name is taken'})
     } else {
